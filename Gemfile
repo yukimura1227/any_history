@@ -90,6 +90,8 @@ group :development do
   gem 'rubocop', require: false
   gem 'view_source_map'
   gem 'bullet'
+  gem 'letter_opener'
+  gem 'letter_opener_web'
 end
 
 group :test do
