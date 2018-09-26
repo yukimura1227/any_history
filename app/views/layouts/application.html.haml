@@ -23,8 +23,10 @@
       .container
         %a.navbar-brand(href="#") AnyHistory
         .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav.navbar-right
-            %li= link_to '新規登録', new_user_path, class: 'uk-button uk-button-default'
+          - unless logged_in?
+            %ul.nav.navbar-nav.navbar-right
+              %li= link_to '新規登録', new_user_path, class: 'uk-button uk-button-default'
+              %li= link_to 'ログイン', login_path, class: 'uk-button uk-button-default'
     .container
       .row
         .col-lg-12
