@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   post 'logout' => 'user_sessions#destroy', :as => :logout
   resources :user_sessions, only: %i[create]
 
+  resources :password_resets, only: %i[new create edit update]
+
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
