@@ -67,6 +67,8 @@ gem 'less-rails', git: 'https://github.com/MustafaZain/less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'draper', '>= 3.0.0.pre1'
 gem 'font-awesome-rails'
+gem 'sorcery'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-doc'
@@ -88,6 +90,8 @@ group :development do
   gem 'rubocop', require: false
   gem 'view_source_map'
   gem 'bullet'
+  gem 'letter_opener'
+  gem 'letter_opener_web'
 end
 
 group :test do
