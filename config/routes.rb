@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'top#index'
   resources :users, only: %i[new create]
   get 'login' => 'user_sessions#new', :as => :login
-  post 'logout' => 'user_sessions#destroy', :as => :logout
+  delete 'logout' => 'user_sessions#destroy', :as => :logout
   resources :user_sessions, only: %i[create]
 
   resources :password_resets, only: %i[new create edit update]
