@@ -1,0 +1,27 @@
+%h1 Listing chronologies
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th User
+      %th Token
+      %th
+      %th
+      %th
+
+  %tbody
+    - @chronologies.each do |chronology|
+      %tr
+        %td= chronology.title
+        %td= chronology.description
+        %td= chronology.user_id
+        %td= chronology.token
+        %td= link_to 'Show', chronology
+        %td= link_to 'Edit', edit_chronology_path(chronology)
+        %td= link_to 'Destroy', chronology, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Chronology', new_chronology_path

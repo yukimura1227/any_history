@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @chronology.title
+%p
+  %b Description:
+  = @chronology.description
+%p
+  %b User:
+  = @chronology.user_id
+%p
+  %b Token:
+  = @chronology.token
+
+= link_to 'Edit', edit_chronology_path(@chronology)
+\|
+= link_to 'Back', chronologies_path

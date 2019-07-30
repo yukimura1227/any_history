@@ -1,0 +1,22 @@
+= form_for @chronology do |f|
+  - if @chronology.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@chronology.errors.count, "error")} prohibited this chronology from being saved:"
+      %ul
+        - @chronology.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :user_id
+    = f.number_field :user_id
+  .field
+    = f.label :token
+    = f.text_field :token
+  .actions
+    = f.submit 'Save'
