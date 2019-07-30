@@ -12,6 +12,10 @@ class ChronologiesController < ApplicationController
   def show
   end
 
+  def view
+    @chronology = Chronology.find_by(token: params[:token])
+  end
+
   # GET /chronologies/new
   def new
     @chronology = Chronology.new

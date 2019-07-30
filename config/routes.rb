@@ -3,7 +3,11 @@
 Rails.application.routes.draw do
   resources :events
   resources :categories
-  resources :chronologies
+  resources :chronologies do
+    collection do
+      get 'view/:token', to: 'chronologies#view', as: :view
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'top#index'
   resources :users, only: %i[new create]

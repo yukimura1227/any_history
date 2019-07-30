@@ -1,0 +1,24 @@
+.page-header
+  %h1.uk-text-center=t '.title', default: @chronology.title
+
+%table.uk-width1-1.uk-table.uk-table-striped
+  %tr
+    %td
+    - (@chronology.min_year..@chronology.max_year).each do |year|
+      %td
+        %table
+          %tr
+            %td.uk-text-center{ colspan: '12'}= year
+          %tr
+            - (1..12).each do |month|
+              %td.uk-text-center= month
+
+  - @chronology.categories.each do |c|
+    %tr
+      %td= c.theme
+      - (@chronology.min_year..@chronology.max_year).each do |year|
+        %td
+          %table
+            %tr
+              - (1..12).each do |month|
+                %td.uk-text-center
