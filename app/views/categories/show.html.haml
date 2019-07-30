@@ -1,12 +1,17 @@
-%p#notice= notice
+- model_class = Category
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
 
 %p
-  %b Theme:
+  %strong= model_class.human_attribute_name(:theme) + ':'
+  %br
   = @category.theme
 %p
-  %b Chronology:
+  %strong= model_class.human_attribute_name(:chronology_id) + ':'
+  %br
   = @category.chronology_id
 
-= link_to 'Edit', edit_category_path(@category)
-\|
-= link_to 'Back', categories_path
+
+= link_to t('.back', :default => t("helpers.links.back")), categories_path, :class => 'btn btn-default'
+= link_to t('.edit', :default => t("helpers.links.edit")), edit_category_path(@category), :class => 'btn btn-default'
+= link_to t('.destroy', :default => t("helpers.links.destroy")), category_path(@category), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
