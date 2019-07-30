@@ -1,25 +1,12 @@
 # any_history
 drawing timeline service
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Database initialization
+```
+bundle exec rake db:migrate
+```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## setup front end libraries
+```
+yarn
+```
