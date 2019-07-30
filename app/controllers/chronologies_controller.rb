@@ -25,6 +25,7 @@ class ChronologiesController < ApplicationController
   # POST /chronologies.json
   def create
     @chronology = Chronology.new(chronology_params)
+    @chronology.user = current_user
 
     respond_to do |format|
       if @chronology.save
@@ -68,6 +69,6 @@ class ChronologiesController < ApplicationController
   end
 
   def chronology_params
-    params.require(:chronology).permit(:title, :description, :user_id, :token)
+    params.require(:chronology).permit(:title, :description, :token)
   end
 end
