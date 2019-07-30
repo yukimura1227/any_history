@@ -62,13 +62,12 @@ class ChronologiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_chronology
-      @chronology = Chronology.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def chronology_params
-      params.require(:chronology).permit(:title, :description, :user_id, :token)
-    end
+  def set_chronology
+    @chronology = Chronology.find_by(id: params[:id], user_id: current_user.id)
+  end
+
+  def chronology_params
+    params.require(:chronology).permit(:title, :description, :user_id, :token)
+  end
 end
