@@ -1,22 +1,25 @@
-= form_for @chronology do |f|
-  - if @chronology.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@chronology.errors.count, "error")} prohibited this chronology from being saved:"
-      %ul
-        - @chronology.errors.full_messages.each do |message|
-          %li= message
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :user_id
-    = f.number_field :user_id
-  .field
-    = f.label :token
-    = f.text_field :token
-  .actions
-    = f.submit 'Save'
+= form_for @chronology, html: { class: "form form-horizontal chronology" } do |f|
+  .form-group
+    = f.label :title, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :title, class: 'form-control', required: true
+    = f.error_span(:title)
+  .form-group
+    = f.label :description, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :description, class: 'form-control', required: true
+    = f.error_span(:description)
+  .form-group
+    = f.label :user_id, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :user_id, class: 'form-control', required: true
+    = f.error_span(:user_id)
+  .form-group
+    = f.label :token, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :token, class: 'form-control', required: true
+    = f.error_span(:token)
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      = f.submit nil,class: 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), chronologies_path, :class => 'btn btn-default'

@@ -1,7 +1,4 @@
-%h1 Editing chronology
-
-= render 'form'
-
-= link_to 'Show', @chronology
-\|
-= link_to 'Back', chronologies_path
+- model_class = Chronology
+.page-header
+  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
+= render :partial => "form"
