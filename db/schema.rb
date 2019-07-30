@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_07_30_150548) do
     t.datetime "updated_at", null: false
     t.integer "max_year", default: 2019, null: false
     t.integer "min_year", default: 2019, null: false
+    t.index ["token"], name: "index_chronologies_on_token"
     t.index ["user_id"], name: "index_chronologies_on_user_id"
   end
 

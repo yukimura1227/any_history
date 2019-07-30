@@ -8,6 +8,7 @@ class CreateChronologies < ActiveRecord::Migration[5.2]
 
       t.timestamps
       t.index :user_id
+      t.index :token
     end
   end
 end
