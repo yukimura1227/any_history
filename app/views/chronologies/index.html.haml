@@ -8,6 +8,8 @@
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:description)
       %th= model_class.human_attribute_name(:user_id)
+      %th= model_class.human_attribute_name(:min_year)
+      %th= model_class.human_attribute_name(:max_year)
       %th= model_class.human_attribute_name(:token)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
@@ -18,6 +20,8 @@
         %td= chronology.title
         %td= chronology.description
         %td= chronology.user_id
+        %td= chronology.min_year
+        %td= chronology.max_year
         %td= chronology.token
         %td=l chronology.created_at
         %td

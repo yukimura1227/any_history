@@ -10,6 +10,16 @@
       = f.text_field :description, class: 'form-control', required: true
     = f.error_span(:description)
   .form-group
+    = f.label :min_year, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.number_field :min_year, class: 'form-control', required: true
+    = f.error_span(:min_year)
+  .form-group
+    = f.label :max_year, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.number_field :max_year, class: 'form-control', required: true
+    = f.error_span(:max_year)
+  .form-group
     = f.label :token, class: 'control-label col-lg-2'
     .col-lg-10
       = f.text_field :token, class: 'form-control', required: true

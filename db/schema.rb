@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_30_144055) do
+ActiveRecord::Schema.define(version: 2019_07_30_150548) do
 
   create_table "chronologies", force: :cascade do |t|
     t.string "title", null: false
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2019_07_30_144055) do
     t.string "token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "max_year", default: 2019, null: false
+    t.integer "min_year", default: 2019, null: false
     t.index ["user_id"], name: "index_chronologies_on_user_id"
   end
 
