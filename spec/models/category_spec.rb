@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'association' do
+    describe 'belongs_to' do
+      it { is_expected.to belong_to(:chronology) }
+    end
+  end
 end
