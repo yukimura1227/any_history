@@ -27,12 +27,10 @@
         %img{:alt => "next timeline arrow", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_next.svg"}/
 
 = form_for Category.new, remote: true, html: { class: "form form-inline" } do |f|
-  = f.label :theme, class: 'control-label'
-  = f.text_field :theme, class: 'form-control', required: true
-  = f.error_span(:theme)
+  = f.text_field :theme, class: 'form-control', required: true, placeholder: 'theme'
 
   = f.hidden_field :chronology_id, value: @chronology.id
-  = f.button :submit, class: 'btn btn-primary'
+  = f.submit nil,class: 'btn btn-primary'
 :javascript
   (function() {
 
