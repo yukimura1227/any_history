@@ -4,29 +4,7 @@
 
 - @chronology.categories.each do |c|
   .category_wrap
-    %section.section.intro.uk-text-lead
-      = "Category: #{c.theme}"
-    = form_for Event.new, html: { class: "form form-inline" } do |f|
-      = f.text_field :title, class: 'form-control', required: true, placeholder: 'title'
-      = f.error_span(:title)
-      = f.hidden_field :chronology_id, value: @chronology.id
-      = f.hidden_field :category_id, value: c.id
-      = f.number_field :year, class: 'form-control', required: true, placeholder: 'year', min: 1900, max: 2050
-      = f.number_field :month, class: 'form-control', required: true, placeholder: 'month', min: 1, max: 12
-      = f.submit nil,class: 'btn btn-primary'
-    %section.timeline
-      %ol
-        - c.events.each do |e|
-          %li
-            %div
-              %time="#{e.year}-#{e.month}"
-              = e.title
-      .arrows
-        %button.arrow.arrow__prev.disabled{:disabled => "disabled"}
-          %img{:alt => "prev timeline arrow", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_prev.svg"}/
-        %button.arrow.arrow__next
-          %img{:alt => "next timeline arrow", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_next.svg"}/
-
+    = render 'category_and_timeline', category: c, chronology: @chronology
 = form_for Category.new, remote: true, html: { class: "form form-inline" } do |f|
   = f.text_field :theme, class: 'form-control', required: true, placeholder: 'theme'
   = f.hidden_field :chronology_id, value: @chronology.id
