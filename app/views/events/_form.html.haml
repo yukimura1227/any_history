@@ -1,25 +1,30 @@
-= form_for @event do |f|
-  - if @event.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
-      %ul
-        - @event.errors.full_messages.each do |message|
-          %li= message
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :chronology_id
-    = f.number_field :chronology_id
-  .field
-    = f.label :year
-    = f.number_field :year
-  .field
-    = f.label :month
-    = f.number_field :month
-  .field
-    = f.label :category_id
-    = f.number_field :category_id
-  .actions
-    = f.submit 'Save'
+= form_for @event, html: { class: "form form-horizontal event" } do |f|
+  .form-group
+    = f.label :title, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :title, class: 'form-control', required: true
+    = f.error_span(:title)
+  .form-group
+    = f.label :chronology_id, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :chronology_id, class: 'form-control', required: true
+    = f.error_span(:chronology_id)
+  .form-group
+    = f.label :year, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :year, class: 'form-control', required: true
+    = f.error_span(:year)
+  .form-group
+    = f.label :month, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :month, class: 'form-control', required: true
+    = f.error_span(:month)
+  .form-group
+    = f.label :category_id, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :category_id, class: 'form-control', required: true
+    = f.error_span(:category_id)
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      = f.submit nil,class: 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), events_path, :class => 'btn btn-default'
