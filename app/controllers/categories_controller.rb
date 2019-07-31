@@ -28,11 +28,14 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
+        @category_and_timeline_html = render_to_string partial: 'chronologies/category_and_timeline', locals: { category: @category, chronology: @category.chronology }
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @category.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
