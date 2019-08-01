@@ -118,5 +118,5 @@ function initialize() {
   init();
 }
 (function() {
-  initialize();
+  document.addEventListener('DOMContentLoaded', initialize);
 })();
