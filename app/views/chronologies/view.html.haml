@@ -7,7 +7,7 @@
 .category_wrap
   - @chronology.categories.each do |c|
     = render 'category_and_timeline', category: c, chronology: @chronology
-= form_for Category.new, remote: true, html: { class: "form form-inline" } do |f|
+= form_for Category.new, remote: true, html: { class: "form form-inline uk-margin-small-bottom" } do |f|
   = f.text_field :theme, class: 'form-control', required: true, placeholder: 'theme'
   = f.hidden_field :chronology_id, value: @chronology.id
   = f.submit nil,class: 'btn btn-primary'
