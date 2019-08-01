@@ -10,8 +10,7 @@
   = f.hidden_field :chronology_id, value: @chronology.id
   = f.submit nil,class: 'btn btn-primary'
 :javascript
-  (function() {
-
+  function initialize() {
     // VARIABLES
     const timeline = document.querySelector(".timeline ol"),
       elH = document.querySelectorAll(".timeline li > div"),
@@ -22,9 +21,6 @@
       lastItem = document.querySelector(".timeline li:last-child"),
       xScrolling = 280,
       disabledClass = "disabled";
-
-    // START
-    window.addEventListener("load", init);
 
     function init() {
       setEqualHeights(elH);
@@ -130,4 +126,9 @@
       });
     }
 
+    // START
+    init();
+  }
+  (function() {
+    initialize();
   })();
