@@ -2,16 +2,16 @@
 -# chronology
 %section.section.intro.uk-text-lead
   = "Category: #{category.theme}"
-= form_for Event.new, html: { class: "form form-inline" } do |f|
+= form_for Event.new, remote: true, html: { class: "form form-inline" } do |f|
   = f.text_field :title, class: 'form-control', required: true, placeholder: 'title'
   = f.error_span(:title)
   = f.hidden_field :chronology_id, value: chronology.id
   = f.hidden_field :category_id, value: category.id
-  = f.number_field :year, class: 'form-control', required: true, placeholder: 'year', min: 1900, max: 2050
-  = f.number_field :month, class: 'form-control', required: true, placeholder: 'month', min: 1, max: 12
+  = f.number_field :year, class: 'form-control', required: true, placeholder: 'year', min: 1900, max: 2050, value: Date.current.year
+  = f.number_field :month, class: 'form-control', required: true, placeholder: 'month', min: 1, max: 12, value: Date.current.month
   = f.submit nil,class: 'btn btn-primary'
 %section.timeline
-  .js-timeline-content
+  .js-timeline-content{ id: "js-timeline-content-#{category.id}" }
     = render 'timeline_content', category: category
   .arrows
     %button.arrow.arrow__prev.disabled{:disabled => "disabled"}

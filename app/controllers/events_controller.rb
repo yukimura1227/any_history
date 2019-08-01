@@ -28,11 +28,14 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+        @timeline_content_html = render_to_string partial: 'chronologies/timeline_content', locals: { category: @event.category }
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

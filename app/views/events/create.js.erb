@@ -1,0 +1,3 @@
+<% if @timeline_content_html.present? %>
+    $('#js-timeline-content-<%= @event.category.id %>').html('<%= j(@timeline_content_html) %>');
+<% end %>
