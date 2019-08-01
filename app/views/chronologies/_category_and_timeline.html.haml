@@ -11,12 +11,8 @@
   = f.number_field :month, class: 'form-control', required: true, placeholder: 'month', min: 1, max: 12
   = f.submit nil,class: 'btn btn-primary'
 %section.timeline
-  %ol
-    - category.events.each do |e|
-      %li
-        %div
-          %time="#{e.year}-#{e.month}"
-          = e.title
+  .js-timeline-content
+    = render 'timeline_content', category: category
   .arrows
     %button.arrow.arrow__prev.disabled{:disabled => "disabled"}
       %img{:alt => "prev timeline arrow", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_prev.svg"}/

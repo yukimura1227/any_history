@@ -1,0 +1,7 @@
+-# category
+%ol
+  - category.events.each do |e|
+    %li
+      %div
+        %time="#{e.year}-#{e.month}"
+        = e.title
