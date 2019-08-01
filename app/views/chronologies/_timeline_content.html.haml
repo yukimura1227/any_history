@@ -2,6 +2,6 @@
 %ol
   - category.events.each do |e|
     %li
-      %div
-        %time="#{e.year}-#{e.month}"
+      .text-vertical
+        %time="#{e.year}年#{e.month}月"
         = e.title
