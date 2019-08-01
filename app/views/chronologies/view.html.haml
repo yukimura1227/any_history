@@ -2,8 +2,8 @@
 %h1.uk-heading-xlarge.uk-text-left.uk-text-bold{style: 'color: white;'}
   ="Title: #{t '.title', default: @chronology.title}"
 
-- @chronology.categories.each do |c|
-  .category_wrap
+.category_wrap
+  - @chronology.categories.each do |c|
     = render 'category_and_timeline', category: c, chronology: @chronology
 = form_for Category.new, remote: true, html: { class: "form form-inline" } do |f|
   = f.text_field :theme, class: 'form-control', required: true, placeholder: 'theme'
