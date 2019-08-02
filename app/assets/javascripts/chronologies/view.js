@@ -1,17 +1,18 @@
 function initialize() {
   // VARIABLES
-  const timeline = document.querySelector(".timeline ol"),
-    elH = document.querySelectorAll(".timeline li > div"),
-    arrows = document.querySelectorAll(".timeline .arrows .arrow"),
-    arrowPrev = document.querySelector(".timeline .arrows .arrow__prev"),
-    arrowNext = document.querySelector(".timeline .arrows .arrow__next"),
-    firstItem = document.querySelector(".timeline li:first-child"),
-    lastItem = document.querySelector(".timeline li:last-child"),
-    xScrolling = 280,
-    disabledClass = "disabled";
+  const firstItem = document.querySelector(".timeline li:first-child");
+  const lastItem = document.querySelector(".timeline li:last-child");
+  const xScrolling = 580;
+  const disabledClass = "disabled";
 
   function init() {
-    animateTl(xScrolling, arrows, timeline);
+    const timeline_wrap = document.querySelector(".timeline");
+    const timeline = timeline_wrap.querySelector("ol");
+    const arrows = timeline_wrap.querySelectorAll(".arrows .arrow");
+    const arrowPrev = timeline_wrap.querySelector(".arrows .arrow__prev");
+    const arrowNext = timeline_wrap.querySelector(".arrows .arrow__next");
+
+    animateTl(xScrolling, arrows, timeline, arrowPrev,  arrowNext);
     setSwipeFn(timeline, arrowPrev, arrowNext);
     setKeyboardFn(arrowPrev, arrowNext);
   }
@@ -41,7 +42,7 @@ function initialize() {
   }
 
   // ANIMATE TIMELINE
-  function animateTl(scrolling, el, tl) {
+  function animateTl(scrolling, el, tl, arrowPrev, arrowNext) {
     let counter = 0;
     for (let i = 0; i < el.length; i++) {
       el[i].addEventListener("click", function() {
