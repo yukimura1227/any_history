@@ -6,15 +6,17 @@ function initialize() {
   const disabledClass = "disabled";
 
   function init() {
-    const timeline_wrap = document.querySelector(".timeline");
-    const timeline = timeline_wrap.querySelector("ol");
-    const arrows = timeline_wrap.querySelectorAll(".arrows .arrow");
-    const arrowPrev = timeline_wrap.querySelector(".arrows .arrow__prev");
-    const arrowNext = timeline_wrap.querySelector(".arrows .arrow__next");
+    var timeline_wraps = document.querySelectorAll(".timeline");
+    timeline_wraps.forEach( timeline_wrap => {
+      var timeline = timeline_wrap.querySelector("ol");
+      var arrows = timeline_wrap.querySelectorAll(".arrows .arrow");
+      var arrowPrev = timeline_wrap.querySelector(".arrows .arrow__prev");
+      var arrowNext = timeline_wrap.querySelector(".arrows .arrow__next");
 
-    animateTl(xScrolling, arrows, timeline, arrowPrev,  arrowNext);
-    setSwipeFn(timeline, arrowPrev, arrowNext);
-    setKeyboardFn(arrowPrev, arrowNext);
+      animateTl(xScrolling, arrows, timeline, arrowPrev,  arrowNext);
+      setSwipeFn(timeline, arrowPrev, arrowNext);
+      setKeyboardFn(arrowPrev, arrowNext);
+    });
   }
 
   // CHECK IF AN ELEMENT IS IN VIEWPORT
