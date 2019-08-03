@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_30_155153) do
+ActiveRecord::Schema.define(version: 2019_08_03_063605) do
 
   create_table "categories", force: :cascade do |t|
     t.string "theme", default: "", null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_07_30_155153) do
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "url"
     t.index ["category_id"], name: "index_events_on_category_id"
     t.index ["chronology_id"], name: "index_events_on_chronology_id"
   end

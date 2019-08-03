@@ -1,7 +1,7 @@
 -# category
 %ol
-  - category.events.each do |e|
+  - category.events.decorate.each do |e|
     %li
       .text-vertical
         %time="#{e.year}年#{e.month}月"
-        = e.title
+        = e.event_link
