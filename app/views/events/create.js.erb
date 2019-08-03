@@ -1,5 +1,5 @@
 <% if @timeline_content_html.present? %>
-  $('.js-event_title_<%= @event.category.id %>').val('');
+  $('.js-clear_target_<%= @event.category.id %>').val('');
   $('#js-timeline-content-<%= @event.category.id %>').html('<%= j(@timeline_content_html) %>');
   initialize();
 <% end %>

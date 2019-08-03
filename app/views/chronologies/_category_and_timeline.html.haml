@@ -3,7 +3,7 @@
 %section.section.intro.uk-text-lead
   = "Category: #{category.theme}"
 = form_for Event.new, remote: true, html: { class: "form form-inline uk-margin-small-bottom" } do |f|
-  = f.text_field :title, class: "form-control js-event_title_#{category.id}", required: true, placeholder: 'title'
+  = f.text_field :title, class: "form-control js-clear_target_#{category.id}", required: true, placeholder: 'title'
   = f.error_span(:title)
   = f.hidden_field :chronology_id, value: chronology.id
   = f.hidden_field :category_id, value: category.id
