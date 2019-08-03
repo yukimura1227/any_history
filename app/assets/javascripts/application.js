@@ -19,3 +19,4 @@
 //= require uikit/dist/js/uikit.min
 //= require uikit/dist/js/uikit-icons.min
 //= require hammerjs/hammer.min
+//= require dropzone/dist/min/dropzone.min
