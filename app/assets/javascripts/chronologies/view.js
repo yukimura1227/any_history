@@ -1,19 +1,17 @@
 function initialize() {
   // VARIABLES
-  const firstItem = document.querySelector(".timeline li:first-child");
-  const lastItem = document.querySelector(".timeline li:last-child");
   const xScrolling = 580;
   const disabledClass = "disabled";
 
   function init() {
     var timeline_wraps = document.querySelectorAll(".timeline");
     timeline_wraps.forEach( timeline_wrap => {
-      var timeline = timeline_wrap.querySelector("ol");
-      var arrows = timeline_wrap.querySelectorAll(".arrows .arrow");
+      var timeline  = timeline_wrap.querySelector("ol");
+      var arrows    = timeline_wrap.querySelectorAll(".arrows .arrow");
       var arrowPrev = timeline_wrap.querySelector(".arrows .arrow__prev");
       var arrowNext = timeline_wrap.querySelector(".arrows .arrow__next");
 
-      animateTl(xScrolling, arrows, timeline, arrowPrev,  arrowNext);
+      animateTl(xScrolling, arrows, timeline_wrap, arrowPrev,  arrowNext);
       setSwipeFn(timeline, arrowPrev, arrowNext);
       setKeyboardFn(arrowPrev, arrowNext);
     });
@@ -44,7 +42,10 @@ function initialize() {
   }
 
   // ANIMATE TIMELINE
-  function animateTl(scrolling, el, tl, arrowPrev, arrowNext) {
+  function animateTl(scrolling, el, timeline_wrap, arrowPrev, arrowNext) {
+    var tl = timeline_wrap.querySelector("ol");
+    var firstItem = timeline_wrap.querySelector("li:first-child");
+    var lastItem = timeline_wrap.querySelector("li:last-child");
     let counter = 0;
     for (let i = 0; i < el.length; i++) {
       el[i].addEventListener("click", function() {
