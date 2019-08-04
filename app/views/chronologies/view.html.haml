@@ -1,3 +1,22 @@
+:javascript
+  $(function (){
+    Dropzone.autoDiscover = false;
+    $(".mydropzone").each( (idx, element) => {
+      var option = {
+        maxFilesize: 1,
+        paramName: 'image[file]',
+        success: function(file, response){
+          console.log(element);
+          append_target_id = $(element).data('link-target');
+          console.log(append_target_id);
+          $(append_target_id).prepend('<img src="' + file.dataURL + '" style= "max-height: 50px;"/>');
+          $(element).remove();
+        }
+      };
+      new Dropzone(element, option);
+    });
+    $(".mydropzone").append('<div class="dz-default dz-message"><span>Drop files here or click to upload.</span>');
+  });
 - content_for :head do
   = stylesheet_link_tag 'chronologies/view.css'
   = javascript_include_tag 'chronologies/view.js'

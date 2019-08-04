@@ -2,7 +2,7 @@
 -# chronology
 %section.section.intro.uk-text-lead
   = "Category: #{category.theme}"
-= form_for Event.new, remote: true, html: { class: "form form-inline uk-margin-small-bottom" } do |f|
+= form_for Event.new, remote: true, html: { class: "form form-inline uk-margin-small-bottom", id: "js-event-form-#{category.id}" } do |f|
   = f.text_field :title, class: "form-control js-clear_target_#{category.id}", required: true, placeholder: 'title'
   = f.error_span(:title)
   = f.hidden_field :chronology_id, value: chronology.id
@@ -11,6 +11,11 @@
   = f.number_field :month, class: 'form-control', required: true, placeholder: 'month', min: 1, max: 12, value: Date.current.month
   = f.text_field :url, class: "form-control  js-clear_target_#{category.id}", required: false, placeholder: 'url'
   = f.submit nil,class: 'btn btn-success'
+= form_for Image.new, html: { class: "form form-inline image mydropzone" }, data: { 'link-target': "#js-event-form-#{category.id}"} do |f|
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      .fallback
+        = f.file_field :file
 %section.timeline
   .js-timeline-content{ id: "js-timeline-content-#{category.id}" }
     = render 'timeline_content', category: category
@@ -19,4 +24,3 @@
       %img{:alt => "prev timeline arrow", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_prev.svg"}/
     %button.arrow.arrow__next
       %img{:alt => "next timeline arrow", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_next.svg"}/
-

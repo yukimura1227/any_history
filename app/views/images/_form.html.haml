@@ -1,16 +1,22 @@
 :javascript
   $(function (){
     Dropzone.autoDiscover = false;
-    $(".mydropzone").dropzone({
-      maxFilesize: 1,
-      paramName: 'image[file]',
-      success: function(file, response){
-        alert("upload finished!!");
-      }
+    $(".mydropzone").each( (idx, element) => {
+      var option = {
+        maxFilesize: 1,
+        paramName: 'image[file]',
+        success: function(file, response){
+          console.log(file.dataURL);
+          $('.mydropzone').append('<img src="' + file.dataURL + '" style= "max-height: 50px;"/>');
+        }
+      };
+      new Dropzone(element, option);
     });
+    $(".mydropzone").append('<div class="dz-default dz-message"><span>Drop files here or click to upload.</span>');
   });
-= form_for @image, html: { class: "form form-horizontal image mydropzone" } do |f|
+= form_for @image, html: { class: "form form-inline image mydropzone uk-text-center" } do |f|
   .form-group
-    .col-lg-offset-2.col-lg-10
-      .fallback
-        = f.file_field :file
+    .fallback
+      = f.file_field :file
+.col-lg-2
+  = link_to '一覧に戻る', images_path, :class => 'btn btn-default'
