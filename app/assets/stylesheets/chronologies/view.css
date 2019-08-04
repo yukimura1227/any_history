@@ -204,14 +204,3 @@
   -webkit-text-orientation: upright;
   text-orientation: upright;
 }
-
-.dropzone {
-  border: 2px dashed #b4bcc2;
-}
-
-.dz-message {
-  font-size: 14px;
-  text-align: center;
-  margin: 0;
-  display: inline;
-}

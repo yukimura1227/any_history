@@ -1,5 +1,16 @@
-= form_for @image, html: { class: "form form-horizontal image" } do |f|
+:javascript
+  $(function (){
+    Dropzone.autoDiscover = false;
+    $(".mydropzone").dropzone({
+      maxFilesize: 1,
+      paramName: 'image[file]',
+      success: function(file, response){
+        alert("upload finished!!");
+      }
+    });
+  });
+= form_for @image, html: { class: "form form-horizontal image mydropzone" } do |f|
   .form-group
     .col-lg-offset-2.col-lg-10
-      = f.submit nil,class: 'btn btn-primary'
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), images_path, :class => 'btn btn-default'
+      .fallback
+        = f.file_field :file

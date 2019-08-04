@@ -5,12 +5,14 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:image)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @images.each do |image|
       %tr
         %td= link_to image.id, image_path(image)
+        %td= image_tag image.file, style: 'max-height: 50px;'
         %td=l image.created_at
         %td
           = link_to t('.show', :default => t("helpers.links.show")), image_path(image), :class => 'btn btn-default btn-xs'
