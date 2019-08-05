@@ -3,6 +3,7 @@
 # for OAuth
 class OauthController < ApplicationController
   skip_before_action :require_login
+  before_action :validate_email_domain, only: :callback
 
   def oauth
     login_at(params[:provider])
@@ -30,5 +31,20 @@ class OauthController < ApplicationController
 
   def auth_params
     params.permit(:code, :provider)
+  end
+
+  def validate_email_domain
+    return if ENV['LOGIN_ALLOW_DOMAIN_CSV'].blank?
+
+    email = sorcery_fetch_user_hash(:google).dig(:user_info, 'email')
+    if email.present?
+      allow_domains = ENV['LOGIN_ALLOW_DOMAIN_CSV'].split(',')
+      unless allow_domains.any? { |domain| email.end_with?("@#{domain}") }
+        redirect_to(
+          root_path,
+          alert: "allow email domain : [#{ENV['LOGIN_ALLOW_DOMAIN_CSV']}]"
+        )
+      end
+    end
   end
 end
