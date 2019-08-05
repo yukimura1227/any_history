@@ -19,7 +19,7 @@
         = f.file_field :file
 %section.timeline
   .js-timeline-content{ id: "js-timeline-content-#{category.id}" }
-    = render 'timeline_content', category: category
+    = render 'chronologies/timeline_content', category: category
   .arrows
     %button.arrow.arrow__prev.disabled{:disabled => "disabled"}
       %img{:alt => "prev timeline arrow", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/arrow_prev.svg"}/
