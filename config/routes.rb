@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'top#index'
-  resources :users, only: %i[new create]
   get 'login' => 'user_sessions#new', :as => :login
   get 'oauth/callback', to: 'oauth#callback'
   get 'oauth/:provider', to: 'oauth#oauth', as: 'auth_at_provider'
