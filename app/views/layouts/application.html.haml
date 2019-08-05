@@ -27,6 +27,7 @@
             - unless logged_in?
               %li= link_to '新規登録', new_user_path, class: 'uk-button uk-button-default'
               %li= link_to 'ログイン', login_path, class: 'uk-button uk-button-default'
+              %li= link_to 'Login', auth_at_provider_path(provider: :google), class: 'uk-button uk-button-default'
             - else
               %li= link_to 'ログアウト', logout_path, method: :delete, class: 'uk-button uk-button-default'
     .container-fluid
