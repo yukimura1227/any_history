@@ -1,2 +1,100 @@
-%h1
-  This is a sample top page
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title Cover - UIkit 3 KickOff
+    %link{:href => "img/favicon.ico", :rel => "icon"}/
+    / CSS FILES
+    = stylesheet_link_tag "application", :media => "all"
+    :css
+      .wrap::before {
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+        content: '';
+        z-index: 1;
+        background-color: rgba(0,0,0,0.5);
+      }
+      .lead {
+        font-size: 1.175em;
+        font-weight: 300;
+      }
+      .uk-logo img {
+        height: 28px;
+      }
+  %body.uk-light.wrap.uk-background-norepeat.uk-background-cover.uk-background-center-center.uk-cover-container.uk-background-secondary
+    %img{:alt => "", "data-src" => "https://picsum.photos/id/24/1200/900", "data-srcset" => "https://picsum.photos/id/24/640/700 640w,\r\n\t\t             https://picsum.photos/id/24/960/700 960w,\r\n\t\t             https://picsum.photos/id/24/1200/900 1200w,\r\n\t\t             https://picsum.photos/id/24/2000/1000 2000w", "data-uk-cover" => "", "data-uk-img" => "", :sizes => "100vw"}/
+    .uk-flex.uk-flex-center.uk-flex-middle.uk-height-viewport.uk-position-z-index.uk-position-relative{"data-uk-height-viewport" => "min-height: 400"}
+      / NAV
+      .uk-position-top
+        .uk-container.uk-container-small
+          %nav.uk-navbar-container.uk-navbar-transparent{"data-uk-navbar" => ""}
+            .uk-navbar-left
+              .uk-navbar-item
+                %a.uk-logo{:href => ""}
+                  %img{:alt => "Logo", :src => "img/cover-logo.svg"}/
+            .uk-navbar-right
+              %ul.uk-navbar-nav
+                %li.uk-active{:class => "uk-visible@m"}
+                  %a{"data-uk-icon" => "home", :href => ""}
+                %li{:class => "uk-visible@s"}
+                  %a{:href => ""} Features
+                %li{:class => "uk-visible@s"}
+                  %a{:href => ""} Security
+                %li{:class => "uk-visible@s"}
+                  %a{:href => ""} Testimonials
+                %li
+                  %a.uk-navbar-toggle{"data-uk-navbar-toggle-icon" => "", "data-uk-toggle" => "", :href => "#offcanvas-nav"}
+      / /NAV
+      / TEXT
+      .uk-container.uk-container-small.uk-flex-auto.uk-text-center{"data-uk-scrollspy" => "target: > .animate; cls: uk-animation-slide-bottom-small uk-invisible; delay: 300"}
+        %h1.uk-heading-primary.animate.uk-invisible{:style => "font-weight: 700;"} Sleek, Fast and Reliable.
+        .uk-margin-auto.animate.uk-invisible{:class => "uk-width-4-5@m"}
+          %p.lead Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad, reiciendis maxime, facilis nam natus incidunt provident.
+        .uk-margin-medium-top.animate.uk-invisible{"data-uk-margin" => "", "data-uk-scrollspy-class" => "uk-animation-fade uk-invisible"}
+          %a.uk-button.uk-button-default.uk-button-large.uk-width-2-3{:class => "uk-width-auto@s", "data-uk-icon" => "arrow-right", :title => "Learn More"} LEARN MORE
+          %a.uk-button.uk-button-primary.uk-button-large.uk-width-2-3{:class => "uk-width-auto@s", "data-uk-icon" => "check", :title => "Learn More"} TRY IT OUT
+      / /TEXT
+      / FOOT
+      .uk-position-bottom-center.uk-position-small
+        %span.uk-text-small.uk-text-center
+          © 2019 |
+          %a{:href => "https://github.com/zzseba78/Kick-Off", :title => "Created by KickOff"} Created by KickOff
+          | Built with
+          %a{"data-uk-tooltip" => "", :href => "http://getuikit.com", :target => "_blank", :title => "Visit UIkit 3 site"}
+            %span{"data-uk-icon" => "uikit"}
+      / /FOOT
+    / OFFCANVAS
+    #offcanvas-nav{"data-uk-offcanvas" => "flip: true; overlay: false"}
+      .uk-offcanvas-bar.uk-offcanvas-bar-animation.uk-offcanvas-slide
+        %button.uk-offcanvas-close.uk-close.uk-icon{"data-uk-close" => "", :type => "button"}
+        %ul.uk-nav.uk-nav-default
+          %li.uk-active
+            %a{:href => "#"} Active
+          %li.uk-parent
+            %a{:href => "#"} Parent
+            %ul.uk-nav-sub
+              %li
+                %a{:href => "#"} Sub item
+              %li
+                %a{:href => "#"} Sub item
+          %li.uk-nav-header Header
+          %li
+            %a{:href => "#js-options"}
+              %span.uk-margin-small-right.uk-icon{"data-uk-icon" => "icon: table"}
+              Item
+          %li
+            %a{:href => "#"}
+              %span.uk-margin-small-right.uk-icon{"data-uk-icon" => "icon: thumbnails"}
+              Item
+          %li.uk-nav-divider
+          %li
+            %a{:href => "#"}
+              %span.uk-margin-small-right.uk-icon{"data-uk-icon" => "icon: trash"}
+              Item
+        %h3 Title
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    / /OFFCANVAS
+    / JS FILES
+    = javascript_include_tag "application"
