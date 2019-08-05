@@ -7,6 +7,7 @@
   = f.error_span(:title)
   = f.hidden_field :chronology_id, value: chronology.id
   = f.hidden_field :category_id, value: category.id
+  = f.hidden_field :image_id, value: ''
   = f.number_field :year, class: 'form-control', required: true, placeholder: 'year', min: 1900, max: 2050, value: Date.current.year
   = f.number_field :month, class: 'form-control', required: true, placeholder: 'month', min: 1, max: 12, value: Date.current.month
   = f.text_field :url, class: "form-control  js-clear_target_#{category.id}", required: false, placeholder: 'url'

@@ -4,4 +4,5 @@
 class Event < ApplicationRecord
   belongs_to :chronology
   belongs_to :category
+  belongs_to :image
 end

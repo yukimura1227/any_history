@@ -5,3 +5,5 @@
       .text-vertical
         %time="#{e.year}年#{e.month}月"
         = e.event_link
+        - if e.image.present?
+          = image_tag url_for(e.image.file), style: 'max-height: 100px; max-width: 100px;'

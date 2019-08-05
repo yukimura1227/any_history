@@ -6,7 +6,6 @@
         maxFilesize: 1,
         paramName: 'image[file]',
         success: function(file, response){
-          console.log(file.dataURL);
           $('.mydropzone').append('<img src="' + file.dataURL + '" style= "max-height: 50px;"/>');
         }
       };

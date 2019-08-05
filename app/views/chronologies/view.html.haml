@@ -6,10 +6,10 @@
         maxFilesize: 1,
         paramName: 'image[file]',
         success: function(file, response){
-          console.log(element);
           append_target_id = $(element).data('link-target');
-          console.log(append_target_id);
-          $(append_target_id).prepend('<img src="' + file.dataURL + '" style= "max-height: 50px;"/>');
+          append_target = $(append_target_id);
+          append_target.find('#event_image_id').val(response.id);
+          append_target.prepend('<img src="' + file.dataURL + '" style= "max-height: 50px;"/>');
           $(element).remove();
         }
       };
