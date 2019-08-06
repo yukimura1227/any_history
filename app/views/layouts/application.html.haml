@@ -28,6 +28,11 @@
               AnyHistory
         .uk-navbar-right
           %ul.uk-navbar-nav
+            %li
+              = link_to cards_chronologies_path do
+                %i{ 'data-uk-icon': 'history' }
+                chronologies
+
             - unless logged_in?
               %li= link_to 'ログイン', auth_at_provider_path(provider: :google), class: 'uk-button uk-button-default'
             - else
