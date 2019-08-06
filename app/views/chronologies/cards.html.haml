@@ -23,7 +23,8 @@
                   = l chronology.created_at, format: :short
             .uk-card-media
               .uk-inline-clip.uk-transition-toggle{:tabindex => "0"}
-                = image_tag 'note_kurorekishi.png', class: 'lazy', data: { height: '300', width: 400, 'uk-img': '', src: asset_url('note_kurorekishi.png') }
+                = link_to view_chronologies_path(chronology.token) do
+                  = image_tag 'note_kurorekishi.png', class: 'lazy', data: { height: '300', width: 400, 'uk-img': '', src: asset_url('note_kurorekishi.png') }
                 .uk-transition-slide-bottom.uk-position-bottom.uk-overlay.uk-overlay-primary
                   = chronology.description
             .uk-card-footer
