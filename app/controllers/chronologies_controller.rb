@@ -76,7 +76,7 @@ class ChronologiesController < ApplicationController
   end
 
   def set_chronologies
-    @chronologies = Chronology.all
+    @chronologies = Chronology.includes(:user).all
   end
 
   def chronology_params

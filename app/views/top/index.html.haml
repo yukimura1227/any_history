@@ -39,7 +39,7 @@
             .uk-navbar-right
               %ul.uk-navbar-nav
                 %li.uk-active{:class => "uk-visible@s"}
-                  = link_to '', chronologies_path, data: { 'uk-icon': 'home' }
+                  = link_to '', cards_chronologies_path, data: { 'uk-icon': 'home' }
                 %li
                   %a.uk-navbar-toggle{"data-uk-navbar-toggle-icon" => "", "data-uk-toggle" => "", :href => "#offcanvas-nav"}
       / /NAV
@@ -69,7 +69,7 @@
         %button.uk-offcanvas-close.uk-close.uk-icon{"data-uk-close" => "", :type => "button"}
         %ul.uk-nav.uk-nav-default
           %li.uk-active
-            = link_to 'chronologies', chronologies_path
+            = link_to 'Chronologies', cards_chronologies_path
           %li.uk-parent
             Manage Your Chronologies
             %ul.uk-nav-sub
