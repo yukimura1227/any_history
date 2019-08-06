@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require jquery/dist/jquery.min
 //= require twitter/bootstrap
-//= require_tree .
 //= require uikit/dist/js/uikit.min
 //= require uikit/dist/js/uikit-icons.min
 //= require hammerjs/hammer.min
