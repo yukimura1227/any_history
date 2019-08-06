@@ -1,0 +1,88 @@
+%header#site-head
+  .uk-container.uk-container-expand
+    .uk-grid.uk-grid-medium.uk-flex.uk-flex-middle{"data-uk-grid" => ""}
+      .uk-width-expand
+        %form#search-form{:action => ""}
+          .uk-inline.uk-width-1-1
+            %span.uk-form-icon.uk-form-icon-flip{"data-uk-icon" => "icon: search"}
+            %input.uk-input.uk-width-1-1.search-fld{:autofocus => "", :placeholder => "Type your search", :type => "text"}/
+            %a.search-filter{"data-uk-filter-control" => "[data-tags*='']", :hidden => "", :href => "#"} Search
+.spacer
+/ CARDS WRAPPER
+%section.uk-section.uk-section-small.uk-section-default.uk-padding-remove-bottom
+  .uk-container.uk-container-expand.uk-margin-large-bottom
+    .uk-grid.uk-grid-medium.uk-grid-match.js-filter{:class => "uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-child-width-1-5@xl", "data-uk-grid" => "masonry: true", "data-uk-sortable" => "handle: .drag-icon"}
+      - @chronologies.each do |chronology|
+        .nature-card{"data-tags" => "a beautiful landscape - nature outdoor"}
+          .uk-card.uk-card-small.uk-card-default
+            .uk-card-header
+              .uk-grid.uk-grid-small.uk-text-small{"data-uk-grid" => ""}
+                .uk-width-expand
+                  %span.cat-txt Nature / Outdoor
+                .uk-width-auto.uk-text-right.uk-text-muted
+                  %span{"data-uk-icon" => "icon:clock; ratio: 0.8"}
+                  3 min.
+            .uk-card-media
+              .uk-inline-clip.uk-transition-toggle{:tabindex => "0"}
+                = image_tag 'note_kurorekishi.png', class: 'lazy', data: { height: '300', width: 400, 'uk-img': '', src: asset_url('note_kurorekishi.png') }
+                .uk-transition-slide-bottom.uk-position-bottom.uk-overlay.uk-overlay-primary
+                  %span{"data-uk-icon" => "icon:heart; ratio: 0.8"}
+                  12.345
+                  %span{"data-uk-icon" => "icon:comment; ratio: 0.8"}
+                  12.345
+            .uk-card-body
+              %h6.uk-margin-small-bottom.uk-margin-remove-adjacent.uk-text-bold A BEAUTIFUL LANDSCAPE HERE
+              %p.uk-text-small.uk-text-muted Duis aute irure dolor in reprehenderit in voluptate velit
+            .uk-card-footer
+              .uk-grid.uk-grid-small.uk-grid-divider.uk-flex.uk-flex-middle{"data-uk-grid" => ""}
+                .uk-width-expand.uk-text-small
+                  John Doe
+                .uk-width-auto.uk-text-right
+                  %a.uk-icon-link{"data-uk-icon" => "icon:twitter; ratio: 0.8", "data-uk-tooltip" => "title: Twitter", :href => "#"}
+                  %a.uk-icon-link{"data-uk-icon" => "icon:instagram; ratio: 0.8", "data-uk-tooltip" => "title: Instagram", :href => "#"}
+                  %a.uk-icon-link{"data-uk-icon" => "icon:behance; ratio: 0.8", "data-uk-tooltip" => "title: Behance", :href => "#"}
+                  %a.uk-icon-link{"data-uk-icon" => "icon:pinterest; ratio: 0.8", "data-uk-tooltip" => "title: Pinterest", :href => "#"}
+                .uk-width-auto.uk-text-right
+                  %a.uk-icon-link.drag-icon{"data-uk-icon" => "icon:move; ratio: 1", "data-uk-tooltip" => "title: Drag this card", :href => "#"}
+/ /CARDS WRAPPER
+/ FOOTER
+%footer#site-foot.uk-section.uk-section-secondary.uk-section-xsmall
+  .uk-container.uk-text-small.uk-text-center
+    %a{:href => "https://github.com/zzseba78/Kick-Off"} Created by KickOff
+    | Built with
+    %a{"data-uk-tooltip" => "", :href => "http://getuikit.com", :target => "_blank", :title => "Visit UIkit 3 site"}
+      %span{"data-uk-icon" => "uikit"}
+/ /FOOTER
+/ OFFCANVAS
+#offcanvas-nav{"data-uk-offcanvas" => "flip: true; overlay: true"}
+  .uk-offcanvas-bar.uk-offcanvas-bar-animation.uk-offcanvas-slide
+    %button.uk-offcanvas-close.uk-close.uk-icon{"data-uk-close" => "", :type => "button"}
+    %ul.uk-nav.uk-nav-default
+      %li.uk-active
+        %a{:href => "#"} Active
+      %li.uk-parent
+        %a{:href => "#"} Parent
+        %ul.uk-nav-sub
+          %li
+            %a{:href => "#"} Sub item
+          %li
+            %a{:href => "#"} Sub item
+      %li.uk-nav-header Header
+      %li
+        %a{:href => "#js-options"}
+          %span.uk-margin-small-right.uk-icon{"data-uk-icon" => "icon: table"}
+          Item
+      %li
+        %a{:href => "#"}
+          %span.uk-margin-small-right.uk-icon{"data-uk-icon" => "icon: thumbnails"}
+          Item
+      %li.uk-nav-divider
+      %li
+        %a{:href => "#"}
+          %span.uk-margin-small-right.uk-icon{"data-uk-icon" => "icon: trash"}
+          Item
+    %h3 Title
+    %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+/ /OFFCANVAS
+/ JS FILES
+= javascript_include_tag 'chronologies/cards'

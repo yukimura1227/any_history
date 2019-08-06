@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :chronologies do
     collection do
+      get 'cards', to: 'chronologies#cards', as: :cards
       get 'view/:token', to: 'chronologies#view', as: :view
     end
   end
