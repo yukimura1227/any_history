@@ -19,18 +19,20 @@
     = yield(:head)
 
   %body
-    .navbar.navbar-default.navbar-static-top
-      .container
-        %a.navbar-brand(href=root_path) AnyHistory
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav.navbar-right
+    .uk-container.uk-container-expand.uk-background-default
+      %nav.uk-navbar-container.uk-navbar-transparent{"data-uk-navbar" => ""}
+        .uk-navbar-left
+          .uk-navbar-item
+            %a.uk-logo{:href => root_path}
+              %i{ 'data-uk-icon': 'history' }
+              AnyHistory
+        .uk-navbar-right
+          %ul.uk-navbar-nav
             - unless logged_in?
               %li= link_to 'ログイン', auth_at_provider_path(provider: :google), class: 'uk-button uk-button-default'
             - else
-              %li= link_to 'ログアウト', logout_path, method: :delete, class: 'uk-button uk-button-default'
-    .container-fluid
-      .row
-        .col-lg-12
-          = bootstrap_flash
-          = yield
-      %footer
+              %li.uk-button.uk-button-small= link_to 'ログアウト', logout_path, method: :delete, class: ''
+    .uk-container.uk-container-expand
+      = bootstrap_flash
+      = yield
+    %footer
