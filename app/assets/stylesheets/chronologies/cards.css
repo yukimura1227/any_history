@@ -1,3 +1,9 @@
+body {
+  background-image: url('https://picsum.photos/id/1073/1200/900?blur=2&grayscale');
+  background-size: 100vw;
+  min-height: 100vw;
+}
+
 #site-head {
   padding: 10px 0;
   position: fixed;
