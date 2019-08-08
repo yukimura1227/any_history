@@ -67,17 +67,18 @@
       .uk-offcanvas-bar.uk-offcanvas-bar-animation.uk-offcanvas-slide
         %button.uk-offcanvas-close.uk-close.uk-icon{"data-uk-close" => "", :type => "button"}
         %ul.uk-nav.uk-nav-default
-          %li.uk-active
-            = link_to 'Chronologies', cards_chronologies_path
-          %li.uk-parent
-            Manage Your Chronologies
-            %ul.uk-nav-sub
-              %li
-                = link_to 'chronologies', chronologies_path
-              %li
-                = link_to 'categories', categories_path
-              %li
-                = link_to 'events', events_path
+          - if logged_in?
+            %li.uk-active
+              = link_to 'Chronologies', cards_chronologies_path
+            %li.uk-parent
+              Manage Your Chronologies
+              %ul.uk-nav-sub
+                %li
+                  = link_to 'chronologies', chronologies_path
+                %li
+                  = link_to 'categories', categories_path
+                %li
+                  = link_to 'events', events_path
           %li
             - unless logged_in?
               = link_to 'LOGIN', auth_at_provider_path(provider: :google), class: 'uk-button uk-button-default uk-button-large uk-width-2-3 uk-width-auto@s', 'data-uk-icon': 'arrow-right'
