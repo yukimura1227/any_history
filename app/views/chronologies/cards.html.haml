@@ -28,7 +28,7 @@
                   %span{'data-uk-icon': 'icon:clock; ratio: 0.8'}
                   = l chronology.created_at, format: :short
             .uk-card-media
-              .uk-inline-clip.uk-transition-toggle{:tabindex => "0"}
+              .uk-inline-clip.uk-transition-toggle.uk-width-1-1.uk-text-center{:tabindex => "0"}
                 = link_to view_chronologies_path(chronology.token) do
                   = image_tag 'note_kurorekishi.png', style: 'max-height: 300px; max-width: 300px;', class: 'lazy', data: { height: '250', width: 300, 'uk-img': '', src: asset_url('note_kurorekishi.png') }
                 .uk-transition-slide-bottom.uk-position-bottom.uk-overlay.uk-overlay-primary
