@@ -1,2 +1,2 @@
-class Tag < ApplicationRecord
+class Tag < ActsAsTaggableOn::Tag
 end
