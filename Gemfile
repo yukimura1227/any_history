@@ -102,3 +102,5 @@ group :test do
   gem 'codecov', require: false, group: :test
   gem 'shoulda-matchers'
 end
+
+gem 'acts-as-taggable-on', '~> 6.0'
