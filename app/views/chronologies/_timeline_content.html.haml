@@ -2,8 +2,11 @@
 %ol
   - category.events.decorate.each do |e|
     %li
-      .text-vertical
-        %time="#{e.year}年#{e.month}月"
-        = e.event_link
+      %div
+      .uk-flex.uk-flex-column
+        %time.uk-text-center
+          =format("%d/%02d", e.year, e.month)
         - if e.image.present?
           = image_tag url_for(e.image.file), style: 'max-height: 100px; max-width: 100px;'
+        %span.text-vertical
+          = e.event_link
