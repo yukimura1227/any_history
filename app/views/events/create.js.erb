@@ -1,5 +1,7 @@
 <% if @timeline_content_html.present? %>
   $('.js-clear_target_<%= @event.category.id %>').val('');
   $('#js-timeline-content-<%= @event.category.id %>').html('<%= j(@timeline_content_html) %>');
+  $('#js-event-form-<%= @event.category.id %>').find('img').remove();
+  $('#js-event-form-<%= @event.category.id %>').find('#event_image_id').val('');
   initialize();
 <% end %>

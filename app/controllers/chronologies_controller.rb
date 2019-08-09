@@ -1,15 +1,18 @@
 class ChronologiesController < ApplicationController
   before_action :set_chronology, only: [:show, :edit, :update, :destroy]
+  before_action :set_chronologies, only: %i[index cards]
 
   # GET /chronologies
   # GET /chronologies.json
   def index
-    @chronologies = Chronology.all
   end
 
   # GET /chronologies/1
   # GET /chronologies/1.json
   def show
+  end
+
+  def cards
   end
 
   def view
@@ -70,6 +73,10 @@ class ChronologiesController < ApplicationController
 
   def set_chronology
     @chronology = Chronology.find_by(id: params[:id], user_id: current_user.id)
+  end
+
+  def set_chronologies
+    @chronologies = Chronology.includes(:user).all
   end
 
   def chronology_params
