@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: %i[show edit update destroy add_tag remove_tag]
 
   # GET /categories
   # GET /categories.json
@@ -62,6 +62,16 @@ class CategoriesController < ApplicationController
       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def add_tag
+    @category.tag_list << params[:tag][:tag]
+    @category.save
+  end
+
+  def remove_tag
+    @category.tag_list.remove(params[:tag][:tag])
+    @category.save
   end
 
   private

@@ -2,6 +2,34 @@
 -# chronology
 %section.section.intro.uk-text-lead
   = "Category: #{category.theme}"
+  :css
+    .check-box-like-tag {
+      display: none;
+    }
+    .check-box-like-tag + label {
+      cursor: pointer;
+      padding:5px;
+      border-radius: 5px;
+    }
+    .check-box-like-tag + label {
+      background-color: gray;
+      border: 1px dashed;
+      opacity: 0.3;
+    }
+    .check-box-like-tag:checked + label {
+      background-color: orange;
+      border: 1px solid;
+      opacity: 1.0;
+    }
+  - category_tags = category.tag_list
+  - Tag.all.each do |tag|
+    - checked = category_tags.include?(tag.name)
+    - tag_post_url = checked ? remove_tag_category_path(category) : add_tag_category_path(category)
+    = form_for Tag.new, remote: true, url: tag_post_url, authenticity_token: true, html: { class: "form form-inline uk-display-inline"} do |f|
+      = f.hidden_field :tag, value: tag.name
+      = f.check_box :tags, { multiple: true, checked: checked , class: 'check-box-like-tag', id: "category_#{category.id}_tag_#{tag.id}" }, tag.name
+      %label{ for: "category_#{category.id}_tag_#{tag.id}", onclick: 'this.form.submit();' }
+        = tag.name
 = form_for Image.new, html: { class: "form form-inline image mydropzone" }, data: { 'link-target': "#js-event-form-#{category.id}"} do |f|
   .form-group
     .col-lg-offset-2.col-lg-10
