@@ -2,25 +2,6 @@
 -# chronology
 %section.section.intro.uk-text-lead
   = "Category: #{category.theme}"
-  :css
-    .check-box-like-tag {
-      display: none;
-    }
-    .check-box-like-tag + label {
-      cursor: pointer;
-      padding:5px;
-      border-radius: 5px;
-    }
-    .check-box-like-tag + label {
-      background-color: gray;
-      border: 1px dashed;
-      opacity: 0.3;
-    }
-    .check-box-like-tag:checked + label {
-      background-color: orange;
-      border: 1px solid;
-      opacity: 1.0;
-    }
   - category_tags = category.tag_list
   - Tag.all.each do |tag|
     - checked = category_tags.include?(tag.name)
