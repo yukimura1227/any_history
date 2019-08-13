@@ -66,12 +66,22 @@ class CategoriesController < ApplicationController
 
   def add_tag
     @category.tag_list << params[:tag][:tag]
+    @tag = Tag.find_by(name: params[:tag][:tag])
     @category.save
+    @tag_form_html = render_to_string partial: 'chronologies/tag_form', locals: { category: @category, tag: @tag }
+    respond_to do |format|
+      format.js
+    end
   end
 
   def remove_tag
     @category.tag_list.remove(params[:tag][:tag])
+    @tag = Tag.find_by(name: params[:tag][:tag])
     @category.save
+    @tag_form_html = render_to_string partial: 'chronologies/tag_form', locals: { category: @category, tag: @tag }
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
