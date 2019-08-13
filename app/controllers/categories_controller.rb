@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: %i[show edit update destroy add_tag remove_tag]
 
   # GET /categories
   # GET /categories.json
@@ -64,14 +64,35 @@ class CategoriesController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_category
-      @category = Category.find(params[:id])
+  def add_tag
+    @category.tag_list << params[:tag][:tag]
+    @tag = Tag.find_by(name: params[:tag][:tag])
+    @category.save
+    @tag_form_html = render_to_string partial: 'chronologies/tag_form', locals: { category: @category, tag: @tag }
+    respond_to do |format|
+      format.js
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def category_params
-      params.require(:category).permit(:theme, :chronology_id)
+  def remove_tag
+    @category.tag_list.remove(params[:tag][:tag])
+    @tag = Tag.find_by(name: params[:tag][:tag])
+    @category.save
+    @tag_form_html = render_to_string partial: 'chronologies/tag_form', locals: { category: @category, tag: @tag }
+    respond_to do |format|
+      format.js
     end
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_category
+    @category = Category.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def category_params
+    params.require(:category).permit(:theme, :chronology_id)
+  end
 end

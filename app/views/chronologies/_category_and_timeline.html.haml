@@ -2,6 +2,9 @@
 -# chronology
 %section.section.intro.uk-text-lead
   = "Category: #{category.theme}"
+  - Tag.all.each do |tag|
+    %span{ id: "js-tag-form-category-#{category.id}-tag-#{tag.id}"}
+      = render 'tag_form', category: category, tag: tag
 = form_for Image.new, html: { class: "form form-inline image mydropzone" }, data: { 'link-target': "#js-event-form-#{category.id}"} do |f|
   .form-group
     .col-lg-offset-2.col-lg-10

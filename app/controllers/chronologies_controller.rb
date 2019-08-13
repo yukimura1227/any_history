@@ -16,7 +16,7 @@ class ChronologiesController < ApplicationController
   end
 
   def view
-    @chronology = Chronology.includes(categories: :events).includes(:categories).find_by(token: params[:token])
+    @chronology = Chronology.includes(:categories).includes(categories: :taggings).find_by(token: params[:token])
   end
 
   # GET /chronologies/new

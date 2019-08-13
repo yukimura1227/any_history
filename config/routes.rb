@@ -1,9 +1,15 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :tags
   resources :images
   resources :events
-  resources :categories
+  resources :categories do
+    member do
+      post 'add_tag', to: 'categories#add_tag', as: :add_tag
+      post 'remove_tag', to: 'categories#remove_tag', as: :remove_tag
+    end
+  end
   resources :chronologies do
     collection do
       get 'cards', to: 'chronologies#cards', as: :cards

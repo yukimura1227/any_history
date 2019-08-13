@@ -1,0 +1,10 @@
+-# tag: required
+-# category: required
+- category_tags = category.tag_list
+- checked = category_tags.include?(tag.name)
+- tag_post_url = checked ? remove_tag_category_path(category) : add_tag_category_path(category)
+= form_for Tag.new, remote: true, url: tag_post_url, authenticity_token: true, html: { class: "form form-inline uk-display-inline"} do |f|
+  = f.hidden_field :tag, value: tag.name
+  = f.check_box :tags, { multiple: true, checked: checked , class: 'check-box-like-tag', id: "category_#{category.id}_tag_#{tag.id}" }, tag.name
+  %label{ for: "category_#{category.id}_tag_#{tag.id}", onclick: 'Rails.fire(this.form, "submit");' }
+    = tag.name
