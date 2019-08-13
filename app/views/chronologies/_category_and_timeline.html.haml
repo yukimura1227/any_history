@@ -2,15 +2,8 @@
 -# chronology
 %section.section.intro.uk-text-lead
   = "Category: #{category.theme}"
-  - category_tags = category.tag_list
   - Tag.all.each do |tag|
-    - checked = category_tags.include?(tag.name)
-    - tag_post_url = checked ? remove_tag_category_path(category) : add_tag_category_path(category)
-    = form_for Tag.new, remote: true, url: tag_post_url, authenticity_token: true, html: { class: "form form-inline uk-display-inline"} do |f|
-      = f.hidden_field :tag, value: tag.name
-      = f.check_box :tags, { multiple: true, checked: checked , class: 'check-box-like-tag', id: "category_#{category.id}_tag_#{tag.id}" }, tag.name
-      %label{ for: "category_#{category.id}_tag_#{tag.id}", onclick: 'Rails.fire(this.form, "submit");' }
-        = tag.name
+    = render 'tag_form', category: category, tag: tag
 = form_for Image.new, html: { class: "form form-inline image mydropzone" }, data: { 'link-target': "#js-event-form-#{category.id}"} do |f|
   .form-group
     .col-lg-offset-2.col-lg-10
