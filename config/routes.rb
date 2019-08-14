@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   resources :tags
   resources :images
-  resources :events
+  resources :events, except: [:new]
   resources :categories, except: [:new] do
     member do
       post 'add_tag', to: 'categories#add_tag', as: :add_tag

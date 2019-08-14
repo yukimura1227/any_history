@@ -12,11 +12,6 @@ class EventsController < ApplicationController
   def show
   end
 
-  # GET /events/new
-  def new
-    @event = Event.new
-  end
-
   # GET /events/1/edit
   def edit
   end
