@@ -10,4 +10,8 @@ class User < ApplicationRecord
 
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
+
+  def admin?
+    admin_flag? || email == ENV['ADMIN_EMAIL']
+  end
 end

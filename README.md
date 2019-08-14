@@ -42,6 +42,7 @@ heroku config:set GOOGLE_APP_SECRET=bbbb
 heroku config:set LOGIN_ALLOW_DOMAIN_CSV=eeee
 heroku config:add TZ=Asia/Tokyo
 heroku config:set OAUTH_CALLBACK_URL_BASE=https://xxxxxxxxxxxx
+heroku config:set ADMIN_EMAIL=foo@bar.com
 ```
 
 ```
