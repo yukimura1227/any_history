@@ -1,10 +1,16 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[show edit update destroy add_tag remove_tag]
+  before_action :set_category, only: %i[show edit update destroy]
+  before_action :set_some_category, only: %i[add_tag remove_tag]
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories =
+      if current_user.admin?
+        Category.all
+      else
+        Category.joins(:chronology).where(chronologies: { user_id: current_user.id })
+      end
   end
 
   # GET /categories/1
@@ -83,6 +89,16 @@ class CategoriesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_category
+    @category =
+      if current_user.admin?
+        Category.find(params[:id])
+      else
+        Category.joins(:chronology).find_by(id: params[:id], chronologies: { user_id: current_user.id })
+      end
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_some_category
     @category = Category.find(params[:id])
   end
 
