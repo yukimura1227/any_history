@@ -75,11 +75,21 @@ class ChronologiesController < ApplicationController
   private
 
   def set_chronology
-    @chronology = Chronology.find_by(id: params[:id], user_id: current_user.id)
+    @chronology =
+      if current_user.admin?
+        Chronology.find_by(id: params[:id])
+      else
+        Chronology.find_by(id: params[:id], user_id: current_user.id)
+      end
   end
 
   def set_chronologies
-    @chronologies = Chronology.includes(:user).all
+    @chronologies =
+      if current_user.admin?
+        Chronology.includes(:user).all
+      else
+        Chronology.includes(:user).where(user: current_user)
+      end
   end
 
   def chronology_params
