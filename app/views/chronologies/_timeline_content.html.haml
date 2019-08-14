@@ -1,6 +1,6 @@
 -# category
 %ol
-  - category.events.decorate.each do |e|
+  - category.events.includes(:image).decorate.each do |e|
     %li
       %div
       .uk-flex.uk-flex-column
