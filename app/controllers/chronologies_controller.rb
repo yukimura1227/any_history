@@ -1,6 +1,7 @@
 class ChronologiesController < ApplicationController
   before_action :set_chronology, only: [:show, :edit, :update, :destroy]
-  before_action :set_chronologies, only: %i[index cards]
+  before_action :set_chronologies, only: %i[index]
+  before_action :set_all_chronologies, only: %i[cards]
 
   # GET /chronologies
   # GET /chronologies.json
@@ -75,10 +76,24 @@ class ChronologiesController < ApplicationController
   private
 
   def set_chronology
-    @chronology = Chronology.find_by(id: params[:id], user_id: current_user.id)
+    @chronology =
+      if current_user.admin?
+        Chronology.find_by(id: params[:id])
+      else
+        Chronology.find_by(id: params[:id], user_id: current_user.id)
+      end
   end
 
   def set_chronologies
+    @chronologies =
+      if current_user.admin?
+        Chronology.all
+      else
+        Chronology.where(user: current_user)
+      end
+  end
+
+  def set_all_chronologies
     @chronologies = Chronology.includes(:user).all
   end
 

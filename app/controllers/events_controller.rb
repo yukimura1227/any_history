@@ -4,17 +4,17 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events =
+      if current_user.admin?
+        Event.all
+      else
+        Event.joins(:category).joins(category: :chronology).where(categories: {chronologies: { user_id: current_user.id }})
+      end
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
-  end
-
-  # GET /events/new
-  def new
-    @event = Event.new
   end
 
   # GET /events/1/edit
@@ -65,9 +65,15 @@ class EventsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:id])
+      @event =
+        if current_user.admin?
+          Event.find(params[:id])
+        else
+          Event.joins(:category).joins(category: :chronology).find_by(id: params[:id], categories: {chronologies: { user_id: current_user.id }})
+        end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
