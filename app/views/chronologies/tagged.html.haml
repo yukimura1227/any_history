@@ -4,8 +4,11 @@
 = form_tag tagged_chronologies_path, method: 'get' do
   .uk-inline.uk-width-1-1
     .uk-inline
-      .uk-form-icon.uk-form-icon-flip{ 'data-uk-icon': 'icon: search' }
-      = text_field_tag :filter_tags, '', class: 'search-fld uk-input'
+      - Tag.all.each do |tag|
+        - checked = params[:filter_tags]&.include? tag.name # TODO
+        = check_box_tag 'filter_tags[]', tag.name, checked, { multiple: true, class: 'check-box-like-tag', id: "tag_#{tag.id}" }
+        %label{ for: "tag_#{tag.id}" }
+          = tag.name
     .uk-inline.uk-light
       = submit_tag 'Search', class: 'uk-button uk-button-primary'
 %h1.uk-heading-xlarge.uk-text-left.uk-text-bold{style: 'color: white;'}
