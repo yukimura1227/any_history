@@ -1,8 +1,15 @@
 - content_for :head do
   = stylesheet_link_tag 'chronologies/view.css'
   = javascript_include_tag 'chronologies/view.js'
+= form_tag tagged_chronologies_path, method: 'get' do
+  .uk-inline.uk-width-1-1
+    .uk-inline
+      .uk-form-icon.uk-form-icon-flip{ 'data-uk-icon': 'icon: search' }
+      = text_field_tag :filter_tags, '', class: 'search-fld uk-input'
+    .uk-inline.uk-light
+      = submit_tag 'Search', class: 'uk-button uk-button-primary'
 %h1.uk-heading-xlarge.uk-text-left.uk-text-bold{style: 'color: white;'}
-  ="TODO：検索しているタグをここに表示"
+  ="#{params[:filter_tags]}で検索"
 
 %section.timeline
   = render 'chronologies/timeline_content', events: @events

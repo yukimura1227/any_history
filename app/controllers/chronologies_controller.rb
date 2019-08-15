@@ -24,7 +24,7 @@ class ChronologiesController < ApplicationController
   end
 
   def tagged
-    tagged_category_ids = Category.tagged_with('hoge').pluck(:id)
+    tagged_category_ids = Category.tagged_with(params[:filter_tags]).pluck(:id)
     @events = Event.where(category_id: tagged_category_ids).order(:created_at)
   end
 
