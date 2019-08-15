@@ -4,7 +4,7 @@
     %li
       %div
       .uk-flex.uk-flex-column
-        %time.uk-text-center
+        %time.uk-text-center{ 'uk-tooltip': e.category.chronology.user.email }
           =format("%d/%02d", e.year, e.month)
         - if e.image.present?
           = image_tag url_for(e.image.file), style: 'max-height: 100px; max-width: 100px;'
