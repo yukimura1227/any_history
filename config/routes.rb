@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     collection do
       get 'cards', to: 'chronologies#cards', as: :cards
       get 'view/:token', to: 'chronologies#view', as: :view
+      get 'tagged', to: 'chronologies#tagged', as: :tagged
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

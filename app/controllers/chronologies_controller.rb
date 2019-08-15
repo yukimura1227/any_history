@@ -23,6 +23,11 @@ class ChronologiesController < ApplicationController
       .find_by(token: params[:token])
   end
 
+  def tagged
+    tagged_category_ids = Category.tagged_with('hoge').pluck(:id)
+    @events = Event.where(category_id: tagged_category_ids).order(:created_at)
+  end
+
   # GET /chronologies/new
   def new
     @chronology = Chronology.new

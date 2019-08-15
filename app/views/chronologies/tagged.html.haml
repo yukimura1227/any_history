@@ -1,0 +1,8 @@
+- content_for :head do
+  = stylesheet_link_tag 'chronologies/view.css'
+  = javascript_include_tag 'chronologies/view.js'
+%h1.uk-heading-xlarge.uk-text-left.uk-text-bold{style: 'color: white;'}
+  ="TODO：検索しているタグをここに表示"
+
+%section.timeline
+  = render 'chronologies/timeline_content', events: @events
