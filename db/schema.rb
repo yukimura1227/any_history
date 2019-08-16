@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_093139) do
+ActiveRecord::Schema.define(version: 2019_08_16_124835) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2019_08_14_093139) do
     t.string "token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "image_id"
+    t.index ["image_id"], name: "index_chronologies_on_image_id"
     t.index ["token"], name: "index_chronologies_on_token"
     t.index ["user_id"], name: "index_chronologies_on_user_id"
   end
