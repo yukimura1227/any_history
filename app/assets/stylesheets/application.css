@@ -30,9 +30,6 @@
 .mydropzone, .mydropzone * {
   box-sizing: border-box; }
 
-.mydropzone {
-  border: 3px dashed #7882ea;
-}
   .mydropzone.dz-clickable {
     cursor: pointer; }
     .mydropzone.dz-clickable * {

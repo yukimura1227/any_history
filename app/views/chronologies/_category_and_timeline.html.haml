@@ -5,11 +5,9 @@
   - Tag.all.each do |tag|
     %span{ id: "js-tag-form-category-#{category.id}-tag-#{tag.id}"}
       = render 'tag_form', category: category, tag: tag
-= form_for Image.new, html: { class: "form form-inline image mydropzone" }, data: { 'link-target': "#js-event-form-#{category.id}"} do |f|
-  .form-group
-    .col-lg-offset-2.col-lg-10
-      .fallback
-        = f.file_field :file
+= form_for Image.new, html: { class: "form form-inline image mydropzone uk-placeholder uk-padding-remove-vertical uk-background-default uk-text-success" }, data: { 'link-target': "#js-event-form-#{category.id}"} do |f|
+  .fallback
+    = f.file_field :file
 = form_for Event.new, remote: true, html: { class: "form form-inline uk-margin-small-bottom", id: "js-event-form-#{category.id}" } do |f|
   = f.text_field :title, class: "form-control js-clear_target_#{category.id}", required: true, placeholder: 'title'
   = f.error_span(:title)

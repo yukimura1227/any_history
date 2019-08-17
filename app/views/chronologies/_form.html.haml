@@ -17,7 +17,7 @@
     });
     $(".mydropzone").append('<div class="dz-default dz-message"><span>Drop image files here or click to upload.</span>');
   });
-= form_for Image.new, html: { class: "form form-inline image mydropzone" }, data: { 'link-target': '#js-chronology-form'} do |f|
+= form_for Image.new, html: { class: "form form-inline image mydropzone uk-placeholder" }, data: { 'link-target': '#js-chronology-form'} do |f|
   .form-group
     .fallback
       = f.file_field :file
