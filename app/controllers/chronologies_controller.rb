@@ -103,6 +103,6 @@ class ChronologiesController < ApplicationController
   end
 
   def chronology_params
-    params.require(:chronology).permit(:title, :description, :token)
+    params.require(:chronology).permit(:title, :description, :token, :image_id)
   end
 end

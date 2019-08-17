@@ -8,5 +8,8 @@ RSpec.describe Chronology, type: :model do
     describe 'has_many categories' do
       it { is_expected.to have_many(:categories).dependent(:destroy) }
     end
+    describe 'belongs_to image' do
+      it { is_expected.to belong_to(:image).optional }
+    end
   end
 end
