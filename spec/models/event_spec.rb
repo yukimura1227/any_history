@@ -9,7 +9,7 @@ RSpec.describe Event, type: :model do
       it { is_expected.to belong_to(:category) }
     end
     describe 'belongs_to image' do
-      it { is_expected.to belong_to(:image) }
+      it { is_expected.to belong_to(:image).optional }
     end
   end
 end

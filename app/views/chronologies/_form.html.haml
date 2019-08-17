@@ -1,4 +1,28 @@
-= form_for @chronology, html: { class: "form form-horizontal chronology" } do |f|
+:javascript
+  $(function (){
+    Dropzone.autoDiscover = false;
+    $(".mydropzone").each( (idx, element) => {
+      var option = {
+        maxFilesize: 1,
+        paramName: 'image[file]',
+        success: function(file, response){
+          append_target_id = $(element).data('link-target');
+          append_target = $(append_target_id);
+          append_target.find('#chronology_image_id').val(response.id);
+          append_target.prepend('<div class="uk-text-center"><img src="' + file.dataURL + '" style= "max-height: 50px;"/></div>');
+          $(element).remove();
+        }
+      };
+      new Dropzone(element, option);
+    });
+    $(".mydropzone").append('<div class="dz-default dz-message"><span>Drop image files here or click to upload.</span>');
+  });
+= form_for Image.new, html: { class: "form form-inline image mydropzone" }, data: { 'link-target': '#js-chronology-form'} do |f|
+  .form-group
+    .fallback
+      = f.file_field :file
+= form_for @chronology, html: { class: 'form form-horizontal chronology', id: 'js-chronology-form'} do |f|
+  = f.hidden_field :image_id, value: ''
   .form-group
     = f.label :title, class: 'control-label col-lg-2'
     .col-lg-10
