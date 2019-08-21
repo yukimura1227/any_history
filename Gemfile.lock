@@ -228,6 +228,7 @@ GEM
       rack (>= 1.2, < 3)
     parser (2.5.1.2)
       ast (~> 2.4.0)
+    pg (1.1.4)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -427,6 +428,7 @@ DEPENDENCIES
   letter_opener
   letter_opener_web
   listen (>= 3.0.5, < 3.2)
+  pg
   poltergeist
   pry-byebug
   pry-coolline
