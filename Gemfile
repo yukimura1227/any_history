@@ -107,3 +107,4 @@ group :test do
 end
 
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'aws-sdk-s3', require: false
