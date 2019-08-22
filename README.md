@@ -43,6 +43,10 @@ heroku config:set LOGIN_ALLOW_DOMAIN_CSV=eeee
 heroku config:add TZ=Asia/Tokyo
 heroku config:set OAUTH_CALLBACK_URL_BASE=https://xxxxxxxxxxxx
 heroku config:set ADMIN_EMAIL=foo@bar.com
+heroku config:set BUCKETEER_AWS_ACCESS_KEY_ID=xxx
+heroku config:set BUCKETEER_AWS_SECRET_ACCESS_KEY=xxx
+heroku config:set BUCKETEER_AWS_REGION=xxx
+heroku config:set BUCKETEER_BUCKET_NAME=xxx
 ```
 
 ```
